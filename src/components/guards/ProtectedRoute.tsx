@@ -21,15 +21,15 @@ export const ProtectedRoute: React.FC<ProtectedRouteProps> = ({
   }
 
   // Check permissions if required
-  // if (requiredPermissions.length > 0) {
-  //   const hasAccess = requireAll
-  //     ? hasAllPermissions(requiredPermissions)
-  //     : hasAnyPermission(requiredPermissions);
+  if (requiredPermissions.length > 0) {
+    const hasAccess = requireAll
+      ? hasAllPermissions(requiredPermissions)
+      : hasAnyPermission(requiredPermissions);
 
-  //   if (!hasAccess) {
-  //     return <Navigate to="/access-denied" replace />;
-  //   }
-  // }
+    if (!hasAccess) {
+      return <>{children}</>;
+    }
+  }
 
   return <>{children}</>;
 };
